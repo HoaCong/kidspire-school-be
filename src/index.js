@@ -7,6 +7,11 @@ const port = 3101;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+
+app.get("/check", (req, res) => {
+  res.json({ message: "Deploy success!" });
+});
+
 app.post("/login", async (req, res) => {
   console.log(1111111);
   try {
