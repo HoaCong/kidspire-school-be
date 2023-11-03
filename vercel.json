@@ -3,17 +3,33 @@
   "builds": [
     {
       "src": "src/index.js",
-      "use": "@vercel/node"
+      "use": "@now/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/login",
+      "methods": ["POST"],
       "dest": "src/index.js"
-    },
+    }
+  ],
+  "env": {
+    "API_BE": "https://web-english.onrender.com/api"
+  },
+  "functions": {
+    "src/index.js": {
+      "maxDuration": 60
+    }
+  },
+  "headers": [
     {
-      "src": "/(.*)",
-      "dest": "/"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     }
   ]
 }
