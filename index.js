@@ -13,9 +13,20 @@ app.get("/", (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  console.log(1111111);
   try {
     const response = await axios.post(process.env.API_BE + "/login", req.body);
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: "Error occurred while making the request" });
+  }
+});
+
+app.post("/register", async (req, res) => {
+  try {
+    const response = await axios.post(
+      process.env.API_BE + "/register",
+      req.body
+    );
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: "Error occurred while making the request" });
