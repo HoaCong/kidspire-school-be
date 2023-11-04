@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.json({ message: "Deploy success!" });
+  res.json({ message: "Deploy success 1!" });
 });
 
 app.post("/login", async (req, res) => {
